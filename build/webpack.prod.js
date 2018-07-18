@@ -14,6 +14,16 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ["es2015"]
+          }
+        }
+      },
+      {
         test: /\.scss$/,
         use: [
             {
@@ -34,6 +44,23 @@ module.exports = merge(common, {
                 loader: 'sass-loader'
             }
         ]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        use: [
+            {
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'img/[name].[hash:7].[ext]',
+                }
+            },
+            {
+                loader: 'image-webpack-loader',
+                options: {
+                }
+            },
+        ]
     },
     ]
   },
@@ -44,7 +71,7 @@ module.exports = merge(common, {
     }),
     // css分离
     new MiniCssExtractPlugin({
-      filename: "css/[name].css",
+      filename: "[name].css",
     })
   ],
   // devtool: 'source-map',/

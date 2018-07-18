@@ -8,15 +8,15 @@ Software architecture description
 
 #### Installation
 
-1. xxxx
-2. xxxx
-3. xxxx
+1. git clone https://gitee.com/aiyuangong/aygbitcoin-h5.git
+2. cd aygbitcoin-h5
+3. npm install
+4. npm start
 
 #### Instructions
 
-1. xxxx
-2. xxxx
-3. xxxx
+1. 很简单的多页面脚手架，后期逐步完善
+2. 基于webpack4
 
 #### Contribution
 

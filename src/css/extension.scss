@@ -15,6 +15,7 @@ body{
     top: 0;
     left:0;
     z-index: 1;
+    -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;
     a{
         width: 165px;
@@ -26,6 +27,7 @@ body{
         background: rgba(255, 255, 255, 0.3);
         border-radius: 50px;
         margin-bottom: 12px;
+        -webkit-tap-highlight-color: transparent;
         &#mini{
             font-size: 22px;
         }
@@ -90,5 +92,12 @@ body{
             line-height: 50px;
             margin-bottom: 14px;
         }
+    }
+    .note{
+        font-size: 28px;
+        line-height: 50px;
+        color: #FF6200; 
+        margin-top: 40px;
+        padding-bottom: 40px;
     }
 }

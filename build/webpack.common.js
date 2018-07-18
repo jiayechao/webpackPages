@@ -11,16 +11,23 @@ var entries = function(){
     for(let i = 0; i<entryFiles.length; i++){
         let filepath = entryFiles[i];
         let filename = filepath.substring(filepath.lastIndexOf('\/') + 1,filepath.lastIndexOf('.'))
-        map[filename] = filepath
+        if(filename !== 'jquery'){
+            map[filename] = filepath
+        }
     }
     console.log(map)
     return map;
 }
 
+
 module.exports = {
     entry: entries(),
     module:{
         rules: [
+            {
+                test: /\.art$/,
+                loader: "art-template-loader",
+            },
             {
                 test: /\.css$/,
                 use: [
@@ -51,23 +58,6 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 10000,
-                            name: 'img/[name].[hash:7].[ext]'
-                        }
-                    },
-                    {
-                        loader: 'image-webpack-loader',
-                        options: {
-                        }
-                    },
-                ]
-            },
-            {
                 test: /\.html$/,
                 use: [ {
                   loader: 'html-loader',
@@ -87,20 +77,59 @@ module.exports = {
         ]
     },
     plugins: [
+        // 添加jquery
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        }),
         // 自动打包模板
         new HtmlWebpackPlugin({
             title: '新手指引',
             filename: 'extension.html',
             template: 'src/pages/extension.html',
-            chunks: ['extension'],
-            devServer: 'http://localhost:8081',
+            chunks: ['extension']
         }),
         new HtmlWebpackPlugin({
             title: '宣传推广',
             filename: 'propaganda.html',
             template: 'src/pages/propaganda.html',
-            chunks: ['propaganda'],
-            devServer: 'http://localhost:8081',
+            chunks: ['propaganda']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'delc糖果',
+            filename: 'delclogin.html',
+            template: 'src/pages/delclogin.art',
+            chunks: ['delccommon', 'delclogin']
+        }),
+        new HtmlWebpackPlugin({
+            title: '糖果领取',
+            filename: 'delcsugar.html',
+            template: 'src/pages/delcsugar.art',
+            chunks: ['delccommon', 'delcsugar']
+        }),
+        new HtmlWebpackPlugin({
+            title: '糖果领取详情',
+            filename: 'delcdetail.html',
+            template: 'src/pages/delcdetail.art',
+            chunks: ['delccommon', 'delcdetail']
+        }),
+        new HtmlWebpackPlugin({
+            title: '糖果领取',
+            filename: 'delcget.html',
+            template: 'src/pages/delcget.art',
+            chunks: ['delccommon', 'delcget']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'tokenworld下载',
+            filename: 'delcdownload.html',
+            template: 'src/pages/delcdownload.art',
+            chunks: ['delccommon', 'delcdownload']
+        }),
+        new HtmlWebpackPlugin({
+            title: '猎盟币复利',
+            filename: 'compoundInterest.html',
+            template: 'src/pages/compoundInterest.html',
+            chunks: ['compoundInterest']
         })
     ],
     output: {
