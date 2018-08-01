@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const glob = require('glob');
 const srcDir = path.resolve(process.cwd(), "src");
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 var entries = function(){
     const jsDir = path.resolve(srcDir, 'js');
     let entryFiles = glob.sync(jsDir + '/*.{js,jsx}')
@@ -19,31 +20,47 @@ var entries = function(){
     return map;
 }
 
+var htmlplugins = function(config){
+    const pageDir = path.resolve(srcDir, 'pages');
+    let entryFiles = glob.sync(pageDir + '/*.{html,art}')
+    let map = [];
+    for(let i = 0; i<entryFiles.length; i++){
+        let filepath = entryFiles[i];
+        let filename = filepath.substring(filepath.lastIndexOf('\/') + 1,filepath.lastIndexOf('.'));
+        let fileSuffix = filepath.substring(filepath.lastIndexOf('\.') + 1);
+        config.plugins.push(new HtmlWebpackPlugin({
+            filename: filename + '.html',
+            template: 'src/pages/'+filename+'.'+fileSuffix,
+            chunks: [filename]
+        }));
+    }
+}
 
-module.exports = {
+const config = {
     entry: entries(),
     module:{
         rules: [
             {
+                test: /\.vue$/,
+                use: [
+                    {loader: 'vue-loader'}
+                ]
+            },
+            {
                 test: /\.art$/,
-                loader: "art-template-loader",
+                use: [
+                    {loader: "art-template-loader"}
+                ]
+                
             },
             {
                 test: /\.css$/,
                 use: [
-                    'style-loader',
-                    'css-loader'
-                ]
-            },
-            {
-                test: /\.scss$/,
-                use: [
+                    {loader: 'style-loader'},
                     {
-                        loader: 'style-loader'
+                        loader: 'vue-style-loader'
                     },
-                    {
-                        loader: 'css-loader'
-                    },
+                    {loader: 'css-loader'},
                     {
                         loader: 'postcss-loader',
                         options: {
@@ -52,9 +69,6 @@ module.exports = {
                             }
                         }
                     },
-                    {
-                        loader: 'sass-loader'
-                    }
                 ]
             },
             {
@@ -68,13 +82,23 @@ module.exports = {
             },
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 10000,
-                    name: 'fonts/[name].[hash:7].[ext]'
-                }
+                use:[
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 10000,
+                            name: 'fonts/[name].[hash:7].[ext]'
+                        }
+                    }
+                ],
+                
             }
         ]
+    },
+    resolve:{
+        alias:{
+            'vue$':'vue/dist/vue.js'
+        }
     },
     plugins: [
         // 添加jquery
@@ -82,58 +106,12 @@ module.exports = {
             $: 'jquery',
             jQuery: 'jquery'
         }),
-        // 自动打包模板
-        new HtmlWebpackPlugin({
-            title: '新手指引',
-            filename: 'extension.html',
-            template: 'src/pages/extension.html',
-            chunks: ['extension']
-        }),
-        new HtmlWebpackPlugin({
-            title: '宣传推广',
-            filename: 'propaganda.html',
-            template: 'src/pages/propaganda.html',
-            chunks: ['propaganda']
-        }),
-        new HtmlWebpackPlugin({
-            title: 'delc糖果',
-            filename: 'delclogin.html',
-            template: 'src/pages/delclogin.art',
-            chunks: ['delccommon', 'delclogin']
-        }),
-        new HtmlWebpackPlugin({
-            title: '糖果领取',
-            filename: 'delcsugar.html',
-            template: 'src/pages/delcsugar.art',
-            chunks: ['delccommon', 'delcsugar']
-        }),
-        new HtmlWebpackPlugin({
-            title: '糖果领取详情',
-            filename: 'delcdetail.html',
-            template: 'src/pages/delcdetail.art',
-            chunks: ['delccommon', 'delcdetail']
-        }),
-        new HtmlWebpackPlugin({
-            title: '糖果领取',
-            filename: 'delcget.html',
-            template: 'src/pages/delcget.art',
-            chunks: ['delccommon', 'delcget']
-        }),
-        new HtmlWebpackPlugin({
-            title: 'tokenworld下载',
-            filename: 'delcdownload.html',
-            template: 'src/pages/delcdownload.art',
-            chunks: ['delccommon', 'delcdownload']
-        }),
-        new HtmlWebpackPlugin({
-            title: '猎盟币复利',
-            filename: 'compoundInterest.html',
-            template: 'src/pages/compoundInterest.html',
-            chunks: ['compoundInterest']
-        })
+        new VueLoaderPlugin(),
     ],
     output: {
-        filename: 'js/[name].bundle.js',
+        filename: 'js/[name].[hash:7].bundle.js',
         path: path.resolve(__dirname, '..', 'product')
     }
 };
+htmlplugins(config);
+module.exports = config;

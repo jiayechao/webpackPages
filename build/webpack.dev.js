@@ -9,18 +9,12 @@ module.exports = merge(common, {
   devServer: {
     contentBase: './product',
     hot: true,
-    host: '192.168.2.217',
+    host: 'localhost',
     proxy: {
       "/japi": {
         target: "https://tokenworldtest94.aiyuangong.com",
         changeOrigin: true, //跨域
-        // pathRewrite: {"^/api" : ""}
       },
-      "/api": {
-        target: "https://tokenworldtest94.aiyuangong.com",
-        changeOrigin: true, //跨域
-        // pathRewrite: {"^/api" : ""}
-      }
     }
   },
   module: {
@@ -31,15 +25,38 @@ module.exports = merge(common, {
         use: path.resolve('./utils/injectHtml.js')
       },
       {
+        test: /\.scss$/,
+        use: [
+            {
+                loader: 'style-loader'
+            },
+            {
+              loader: 'vue-style-loader'
+            },
+            {
+                loader: 'css-loader'
+            },
+            {
+                loader: 'postcss-loader',
+                options: {
+                    config: {
+                        path: '.postcssrc.js'
+                    }
+                }
+            },
+            {
+                loader: 'sass-loader'
+            }
+        ]
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         use: [
             {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: 'img/[name].[hash:7].[ext]',
-                    // outputPath: 'img/',
-                    // publicPath: 'https://www.tokenworld.pro/help/'
+                    name: 'img/[name].[hash:7].[ext]'
                 }
             }
         ]
@@ -50,8 +67,7 @@ module.exports = merge(common, {
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new vConsolePlugin({
-      filter: ['../utils'],
-      enable: true // 发布代码前记得改回 false
+      enable: false // 发布代码前记得改回 false
     }),
   ],
   mode: 'development'
