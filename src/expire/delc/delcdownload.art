@@ -1,0 +1,27 @@
+<% include('./delcheader.art', {title: '糖果领取详情'}) %>
+
+<div class="download-wrap">
+  <p class="title"><i>活动收到的所有DELC存于Tokenworld的平台账户内，下载APP可提现DELC！</i></p>
+  <a class="btn-img download" href="javascript:;">下载Tokenworld</a>
+
+  <p class="active-title"><i>其他热门活动</i></p>
+  <a href="javascript:;" class="download">
+    <div class="dashboard">
+      <p class="title">持有DELC，每日可获得<span class="rate"></span>%的复利收益</p>
+      <p class="balence-test">当前余额：</p>
+      <div class="content"><span class="balence"></span><span class="symbol"> DELC</span></div>
+      <div class="footer">
+        <div class="accumulative">
+            <p class="text">活动预期收益</p>
+            <div class="profit">
+              <span class="symbol">DELC</span>
+              <span class="count"></span>
+            </div>
+        </div>
+      </div>
+  </div>
+</a>
+  <p class="time"><span class="beginTime"></span> - <span class="endTime"></span></p>
+</div>
+
+<% include('./delcfooter.art') %>

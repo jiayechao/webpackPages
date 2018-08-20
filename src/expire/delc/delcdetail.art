@@ -1,0 +1,15 @@
+<% include('./delcheader.art', {title: '糖果领取详情'}) %>
+
+<div class="result-panel" style="margin-top: 26px;">
+    <div class="content">
+        <p class="text">活动奖励DELC</p>
+        <p class="count"></p>
+    </div>
+</div>
+
+<div class="detail-wrap">
+    <ul id="detail-ul"></ul>
+    <p id="getMore" class="more">加载更多</p>
+</div>
+
+<% include('./delcfooter.art') %>

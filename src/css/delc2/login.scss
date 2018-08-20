@@ -1,0 +1,58 @@
+.title_login{
+	width: 75vw;
+	margin: 6vh auto 0 auto;
+}
+.phone{
+	width: 80vw;
+	height: 11vw;
+	border:0.5vw solid #00fcff;
+	border-radius: 6vw;
+  	margin:4vh auto 0 auto;
+}
+.code{
+	width: 80vw;
+	height: 10.5vw;
+	line-height: 10.5vw;
+	border:0.5vw solid #00fcff;
+	border-radius: 6vw;
+  	margin:2vh auto 0 auto;
+}
+.code_input{
+	width: 30vw;
+}
+.code_btn{
+	padding:0 6vw;
+	margin:-0.2vw -0.2vw 0 0;
+	float: right;
+}
+
+.input{
+	font-size: 4vw;
+	border: 0;
+	background-color: transparent;
+	float:left;
+	height: 10vw;
+	line-height: 10vw;
+	margin-left:4vw;
+	color: #00fcff;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #00fcff;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #00fcff;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #00fcff;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #00fcff;
+}
+
+.about{
+	letter-spacing:0.8vw;
+	font-size: 6vw;
+	color: #00fcff;
+	font-style:italic;
+	margin:4vh auto 2vh auto; 
+}

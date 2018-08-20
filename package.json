@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "webpack-dev-server --open --config build/webpack.dev.js",
     "start": "npm run dev",
-    "build": "webpack --config build/webpack.prod.js",
+    "build": "webpack  --config build/webpack.prod.js",
     "test92": "npm run build",
+    "test94": "npm run build",
     "test": "npm run build",
     "product": "npm run build"
   },
@@ -42,7 +43,6 @@
     "style-loader": "^0.21.0",
     "uglifyjs-webpack-plugin": "^1.2.7",
     "url-loader": "^1.0.1",
-    "vconsole-webpack-plugin": "^1.4.0",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.4",
@@ -60,6 +60,7 @@
     "axios": "^0.18.0",
     "jquery": "^3.3.1",
     "vue": "^2.5.16",
-    "vue-loader": "^15.2.6"
+    "vue-loader": "^15.2.6",
+    "vue-router": "^3.0.1"
   }
 }

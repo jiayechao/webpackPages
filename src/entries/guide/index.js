@@ -1,4 +1,4 @@
-import '../css/extension.scss';
+import '../../css/guide/index.scss';
 
 const el = document.getElementsByClassName('nav')[0];
 const panels = document.getElementsByClassName('panel-wrap');

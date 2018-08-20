@@ -1,0 +1,49 @@
+<% include('../components/delcheader.art', {title: '糖果领取'}) %>
+
+<div class="sugar-wrap">
+  <img class="slogan" src="../img/delc/slogan.png" alt="糖果邀请">
+  <div class="result-panel">
+    <div class="content">
+      <p class="text">活动奖励DELC</p>
+      <p class="count coinBalance"></p>
+      <a class="btn-detail">领取详情</a>
+      <!-- <a class="btn-download">提现</a> -->
+    </div>
+  </div>
+  <p class="getmore"><i>获取更多代币</i></p>
+  <div class="active-wrap">
+    <div class="active shadow-border">
+        <img class="coin" src="../img/delc/coin.png" alt="糖果邀请">
+        <p class="text">领取空投奖励</p>
+        <button class="btn-img-mini airdrop">领取</button>
+    </div>
+    <div class="active shadow-border">
+        <img class="people" src="../img/delc/people.png" alt="糖果邀请">
+        <p class="text">邀请好友领更多</p>
+        <p class="count peopleCount">已邀<span class="inviteCount"></span>人</p>
+    </div>
+  </div>
+  <div class="input-wrap isactive">
+    <input type="text" class="invitationUrl"  readonly value="">
+  </div>
+  <textarea class="invitation">
+区块链人脉共享平台Delink，邀您一同共建全球最大的人脉网络！
+
+注册即可获得DELC代币，邀请好友还可以获取更多，8月上线交易所，项目上线后1币=1简历，领取地址：
+</textarea>
+  <button class="btn-img copy isactive">邀请好友赚取120DELC</button>
+  <p class="rule-title isactive">活动规则</p>
+  <div class="rule-panel isactive">
+    <p>1）新用户成功登录后，可立即获得DELC糖果奖励；</p>
+    <p>2）加客服微信号，通过客服邀请进群；</p>
+    <p>3）社群中不定时会发放领取码；</p>
+    <p>4）在领取页面输入领取码，即可获得DELC空投奖励；</p>
+    <p>5）用户可以领取自己的专属邀请链接，成功邀请好友注册即可获得糖果奖励，邀请越多，奖励越高；</p>
+  </div>
+  <p class="rule-title">关于DELC</p>
+  <div class="rule-panel">
+    <p>DELC是Delink基于社区生态发行的代币，Delink 致力于打造去中心化的 Linkedin。基于区块链技术，打破现有互联网中心化人才信息领域的利益分配模型。通过token（DELC）激励设计，由全球800万猎头联合发起并维护，10亿职场人参与，搭建起一个非营利性的、覆盖全球人脉信息资产的Delink链。</p>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<% include('../components/delcfooter.art') %>

@@ -1,0 +1,84 @@
+body,html{
+  height: 100%;
+  
+}
+body{
+  overflow: auto;
+  box-sizing: border-box;
+}
+body,ul,p{
+  margin: 0;
+}
+ul{
+  padding-left: 0;
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+button,input{
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.toast{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding:20px;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  color: #000;
+  font-size: 26px;
+  transition: 0.3s;
+}
+.white{
+  color: #fff!important;
+}
+/* ---- 清除浮动 --------*/
+.clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+  visibility: hidden;
+  height: 0
+}
+
+.clearfix {
+  zoom: 1
+}
+
+/* ---- 文字单行省略号显示 --------*/
+.text-one-line {
+  max-width: 160px;
+  background-color: gainsboro;
+  display: block;
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ------- 背景图图片全局设置 ---------- */
+.bg-image-cover {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-image-contain {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}

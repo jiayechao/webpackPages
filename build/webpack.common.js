@@ -4,39 +4,46 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const glob = require('glob');
 const srcDir = path.resolve(process.cwd(), "src");
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 var entries = function(){
-    const jsDir = path.resolve(srcDir, 'js');
-    let entryFiles = glob.sync(jsDir + '/*.{js,jsx}')
+    const jsDir = path.resolve(srcDir, 'entries');
+    let entryFiles = glob.sync(jsDir + '/**/*.{js,jsx}')
     let map = {};
     for(let i = 0; i<entryFiles.length; i++){
         let filepath = entryFiles[i];
         let filename = filepath.substring(filepath.lastIndexOf('\/') + 1,filepath.lastIndexOf('.'))
-        if(filename !== 'jquery'){
-            map[filename] = filepath
+        let foldername = filepath.substring(filepath.lastIndexOf('\/',filepath.lastIndexOf('\/')-1) + 1,filepath.lastIndexOf('\/'));
+        if(foldername !== 'pages'){
+            map[foldername+'_'+filename] = filepath
         }
     }
-    console.log(map)
     return map;
 }
 
 var htmlplugins = function(config){
     const pageDir = path.resolve(srcDir, 'pages');
-    let entryFiles = glob.sync(pageDir + '/*.{html,art}')
+    let entryFiles = glob.sync(pageDir + '/**/*.{html,art}')
     let map = [];
     for(let i = 0; i<entryFiles.length; i++){
         let filepath = entryFiles[i];
         let filename = filepath.substring(filepath.lastIndexOf('\/') + 1,filepath.lastIndexOf('.'));
+        let foldername = filepath.substring(filepath.lastIndexOf('\/',filepath.lastIndexOf('\/')-1) + 1,filepath.lastIndexOf('\/'));
         let fileSuffix = filepath.substring(filepath.lastIndexOf('\.') + 1);
-        config.plugins.push(new HtmlWebpackPlugin({
-            filename: filename + '.html',
-            template: 'src/pages/'+filename+'.'+fileSuffix,
-            chunks: [filename]
-        }));
+        if(foldername !== 'pages'){
+            config.plugins.push(new HtmlWebpackPlugin({
+                filename: foldername+'/'+filename + '.html',
+                template: 'src/pages/'+foldername+'/'+filename+'.'+fileSuffix,
+                chunks: [foldername+'_'+filename]
+            }));
+        }
     }
 }
 
-const config = {
+function resolve (dir) {
+    return path.join(__dirname, '..', dir)
+}
+
+const moduleConfig = {
     entry: entries(),
     module:{
         rules: [
@@ -90,14 +97,15 @@ const config = {
                             name: 'fonts/[name].[hash:7].[ext]'
                         }
                     }
-                ],
-                
-            }
+                ]
+              }
         ]
     },
     resolve:{
+        extensions: ['.js', '.vue', '.json'],
         alias:{
-            'vue$':'vue/dist/vue.js'
+            'vue$':'vue/dist/vue.js',
+            '@': resolve('src')
         }
     },
     plugins: [
@@ -106,12 +114,8 @@ const config = {
             $: 'jquery',
             jQuery: 'jquery'
         }),
-        new VueLoaderPlugin(),
-    ],
-    output: {
-        filename: 'js/[name].[hash:7].bundle.js',
-        path: path.resolve(__dirname, '..', 'product')
-    }
+        new VueLoaderPlugin()
+    ]
 };
-htmlplugins(config);
-module.exports = config;
+htmlplugins(moduleConfig);
+module.exports = moduleConfig;

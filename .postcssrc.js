@@ -9,7 +9,9 @@ module.exports = {
       viewportHeight: 1334,
       unitPrecision: 5,
       viewportUnit: 'vw',
-      selectorBlackList: [],
+      selectorBlackList: [
+        'w-content'
+      ],
       minPixelValue: 1,
       mediaQuery: false
     }

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中文名投票开始啦！</title>
+</head>
+<body>
+    <img class="logo" src="../img/vote/logo.png" alt="logo">
+    <div id="part-login" class="dialog hide">
+        <div class="dialog-close" id="part-login-close">
+            <img class="dialog-close-img" src="../img/vote/close.png" alt="close">
+        </div>
+        <div class="dialog-border">
+            <div class="form-control form-phone">
+                <input class="input" type="text" name="mobile" placeholder="请输入手机号" maxlength="11"/>
+                <input type="hidden" name="smsId">
+            </div>
+            <div class="form-control">
+                <input class="input code_input" type="text" name="code" placeholder="请输入验证码" maxlength="4"/>
+                <a id="getCode" class="btn btn-code" href="javascript:;">获取验证码</a>
+            </div>
+            <p class="tips-inline">注：为了保证投票公平，请登录您的账号</p>
+            <a class="btn btn-submit btn-login-submit" href="javascript:;">立即登录</a>
+        </div>
+    </div>
+    <div id="part-rule" class="dialog hide">
+        <div class="dialog-close" id="part-rule-close">
+            <img class="dialog-close-img" src="../img/vote/close.png" alt="close">
+        </div>
+        <div class="dialog-border">
+            <div class="dialog-title">
+                <img class="dialog-title-img" src="../img/vote/dialog-title.png" alt="close">
+            </div>
+            <div class="dialog-content">
+                <p class="dialog-content-p">1、投票时间：8月10日-11日24：00</p>
+                <p class="dialog-content-p">2、每个用户只能投一票</p>
+                <p class="dialog-content-p">3、活动结束后获得票数最多的前三名<br>获得奖励</p>
+                <p class="dialog-content-p">第一名：30000DELC</p>
+                <p class="dialog-content-p">第二名：20000DELC</p>
+                <p class="dialog-content-p">第三名：10000DELC</p>
+                <p class="dialog-content-p">4、本次投票活动严禁任何行为刷票，<br>系统后台会对活动进行严格监控，<br>对刷票行为一经查实，<br>我们会取消票数并且对用户进行永久<br>封号处理</p>
+                <p class="dialog-content-p">5、本活动最终解释权规Delink平台所有</p>
+            </div>
+        </div>
+    </div>
+    <div id="part-list" class="">
+        <div class="title">
+            <img src="../img/vote/title.png" alt="title" class="title-img">
+        </div>
+        <div class="content">
+            <ul>
+                <li>第一名<br>3万DELC</li>
+                <li>第二名<br>2万DELC</li>
+                <li>第三名<br>1万DELC</li>
+            </ul>
+        </div>
+        <div class="tips-content">投票时间：<span class="startTime">8月10日</span> - <span class="endTime">8月11日</span><a href="javascript:;" class="btn-to-tips">投票规则</a></div>
+        <div class="list-content"></div>
+    </div>
+    <div id="part-qrcode" class="dialog hide">
+        <div class="dialog-close" id="part-qrcode-close">
+            <img class="dialog-close-img" src="../img/vote/close.png" alt="close">
+        </div>
+        <div class="dialog-border dialog-qrcode">
+            <img class="dialog-qrcode-img" src="../img/vote/vote-success.png">
+            <div class="dialog-qrcode-ewm">
+                <img class="dialog-qrcode-ewm-img" src="../img/vote/ewm.jpg" alt="">
+            </div>
+            <div class="dialog-qrcode-content">扫码关注Delink官方公众号<br>参与活动领DELC</div>
+        </div>
+    </div>
+</body>
+<script src="https://static.geetest.com/static/tools/gt.js"></script>
+</html>

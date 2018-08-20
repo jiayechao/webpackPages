@@ -1,3 +1,4 @@
+
 const path = require('path');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
@@ -6,7 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 
-const config = merge(common, {
+const moduleConfig = merge(common, {
   module: {
     rules: [
         {
@@ -48,12 +49,14 @@ const config = merge(common, {
                     loader: 'url-loader',
                     options: {
                         limit: 10000,
-                        name: 'img/[name].[hash:7].[ext]',
+                        name: 'imgs/[name].[hash:7].[ext]'
                     }
                 },
-                
+                // {
+                //     loader: 'image-webpack-loader'
+                // }
             ]
-    },
+          }
     ]
   },
   plugins: [
@@ -71,7 +74,7 @@ const config = merge(common, {
     }),
     // css分离
     new MiniCssExtractPlugin({
-      filename: "[name].[hash:7].css",
+      filename: "css/[name].[hash:7].css",
     })
   ],
   optimization: {
@@ -79,7 +82,13 @@ const config = merge(common, {
       new OptimizeCSSAssetsPlugin({})
     ]
   },
-  // devtool: 'source-map',/
+  output: {
+    filename: 'js/[name].[hash:7].bundle.js',
+    path: path.resolve(__dirname, '..', 'product'),
+    publicPath: '/help/'
+  },
+  devtool: 'source-map',
   mode: 'production'
 });
-module.exports = config;
+
+module.exports = moduleConfig;

@@ -1,0 +1,30 @@
+.title_index{
+  display: none;
+}
+.list-wrap{
+  .list-item{
+    display: flex;
+    line-height: 108px;
+    justify-content: space-around;
+    border-bottom: 1px solid #00fcff;
+      .time{
+        
+      }
+      .type{
+        color: #00fcff;
+      }
+      .count{
+        font-size: 58px;
+        color: #00fcff;
+        font-weight: bold;
+        padding: 36px 0;
+      }
+    }
+    
+}
+.loadmore{
+  display: block;
+  color: #fff;
+  line-height: 108px;
+  text-align: center;
+}

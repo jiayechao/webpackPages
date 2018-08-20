@@ -1,0 +1,16 @@
+<% include('./delcheader.art', {title: '糖果领取'}) %>
+<div class="sugar-get">
+    <img class="slogan" src="../img/delc/slogan.png" alt="糖果邀请">
+  <p class="title">领取空投奖励</p>
+  <div class="input-wrap-normal">
+    <input type="text" class="inviteCode" placeholder="请输入领取码">
+  </div>
+  <button class="btn-img-yellow">立即领取</button>
+  <div class="method-wrap">
+    <p class="method-title">如何获取领取码？</p>
+    <p class="method-text">添加客服，进去微信群获得领取码</p>
+    <p class="note">长按二维码识别添加</p>
+  </div>
+</div>
+
+<% include('./delcfooter.art') %>

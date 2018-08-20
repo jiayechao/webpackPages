@@ -1,0 +1,77 @@
+@import './reset.scss';
+body{
+  padding: 30px 30px 0;
+}
+.dashboard{
+  height: 376px;
+  color: #fff;
+  text-align: center;
+  background-image: url(../img/compoundInterest/bg2.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: top left;
+  border-radius: 20px;
+  margin-bottom: 84px;
+  line-height: 1;
+  &.isactive{
+    background-image: url(../img/compoundInterest/bg1.png);
+    .yestoday{
+      display: block!important;
+    }
+  }
+  .title{
+    font-size: 24px;
+    padding-top: 40px;
+    margin-bottom: 66px;
+  }
+  .content{
+    margin-bottom: 98px;
+  }
+  .balence{
+    font-size: 56px;
+  }
+  .symbol{
+    font-size: 32px;
+  }
+  .footer{
+    display: flex;
+    justify-content: space-around;
+    font-size: 24px;
+    .yestoday{
+      display: none;
+    }
+  }
+  .profit{
+    font-size: 32px;
+    margin-top: 10px;
+  }
+}
+.rule{
+  .title{
+    font-size: 40px;
+    color: #333333;
+    font-weight: bold;
+    margin-bottom: 26px;
+  }
+  li{
+    display: flex;
+    font-size: 28px;
+    line-height: 50px;
+    color: #666666;
+    margin-bottom: 15px;
+  }
+  .explain{
+    font-size: 24px;
+    text-align: right;
+    color: #999999;
+  }
+}
+.ad{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  font-size: 0;
+  img{
+    width: 100%;
+  }
+}

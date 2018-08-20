@@ -1,0 +1,446 @@
+@import './reset.scss';
+/*=================变量=========================*/
+$main-color: #000f3d; // 主颜色
+$border-color: #00e6e9; //边框线
+$content-color: #002654; //填充
+$input-color: #002654; //input颜色
+/*=================公用样式=========================*/
+body,html{
+  height: auto;
+  min-height: 100%;
+}
+body{
+  padding: 0 32px;
+  background-color: $main-color;
+  background-image: url('../img/delc/header.png'),url('../img/delc/footer.png');
+  background-repeat: no-repeat;
+  background-position: top left,bottom left;
+  background-size: 100%;
+}
+
+// 头部图片
+.slogan{
+  display: block;
+  width: 424px;
+  margin: 0 auto;
+  margin-top: 44px;
+}
+
+// 获取的代币
+.result-panel{
+  width: 686px;
+  padding: 18px;
+  background-color: rgba(0,60,124,0.5);
+  border-radius: 46px;
+  border: 10px solid #00e6e9;
+  box-sizing: border-box;
+  box-shadow: 0 0 20px 0 $border-color;
+  .content{
+    position: relative;
+    padding: 30px;
+    height: 204px;
+    border-radius: 30px;
+    border: 1px solid #00e6e9;
+    background-color: $main-color;
+    box-sizing: border-box;
+  }
+  .text{
+    font-size: 50px;
+    line-height: 50px;
+    margin-bottom: 30px;
+    color: #fff;
+  }
+  .count{
+    font-size: 56px;
+    font-weight: bold;
+    color: $border-color
+  }
+  .btn-detail,.btn-download{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 182px;
+    height: 46px;
+    line-height: 46px;
+    color: $content-color;
+    font-size: 26px;
+    text-align: center;
+    border-radius: 46px;
+    background: $border-color;
+  }
+  .btn-download{
+    top: 118px;
+  }
+}
+//发光边框
+.shadow-border{
+  border: 2px solid $border-color;
+  box-shadow: 0 0 20px 0 $border-color;
+}
+//发光input
+.input-wrap{
+  width: 690px;
+  height: 90px;
+  margin-top: 35px;
+  background-color: $input-color;
+  border-radius: 90px;
+  box-sizing: border-box;
+  @extend .shadow-border;
+  input{
+    height: 100%;
+    padding: 0;
+    padding-left: 55px;
+    background-color: transparent;
+    border: 0;
+    font-size: 30px;
+    color: $border-color;
+    &::-webkit-input-placeholder { /* WebKit browsers */
+      color:    $border-color;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color:    $border-color;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color:    $border-color;
+    }
+    &::-ms-input-placeholder { /* Internet Explorer 10+ */
+        color:    $border-color;
+    }
+  }
+
+}
+//正常input
+.input-wrap-normal{
+  width: 690px;
+  height: 90px;
+  margin-top: 35px;
+  background-color: #f1f1f1;
+  border-radius: 90px;
+  box-sizing: border-box;
+  border: 0;
+  input{
+    height: 100%;
+    padding: 0;
+    padding-left: 55px;
+    background-color: transparent;
+    border: 0;
+    font-size: 30px;
+    color: #999999;
+  }
+}
+//图片按钮
+.btn-img-mini{
+  width: 234px;
+  height: 74px;
+  font-size: 32px;
+  color: #fff;
+  background-image: url('../img/delc/btn-mini.png');
+  background-size: cover;
+  border-radius: 74px;
+  border:0;
+}
+.btn-img{
+  display: inline-block;
+  width: 690px;
+  height: 102px;
+  text-align: center;
+  line-height: 92px;
+  font-size: 38px;
+  color: #fff;
+  background-image: url('../img/delc/btn.png');
+  background-size: cover;
+  border-radius: 102px;
+  border:0;
+}
+.btn-img-yellow{
+  @extend .btn-img;
+  background-image: url('../img/delc/btn-img-yellow.png');
+  color: #b43129;
+}
+// 关于，活动规则
+.rule-title{
+  font-size: 46px;
+  line-height: 46px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 28px;
+}
+.rule-panel{
+  color: #fff;
+  padding: 22px 30px;
+  font-size: 28px;
+  line-height: 60px;
+  background-color: rgba(0,60,124,0.5);
+  border-radius: 16px;
+  @extend .shadow-border;
+}
+// 弹窗
+#mask{
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.3);
+  .mask-wrap{
+    position: absolute;
+    padding: 36px 30px;
+    width: 100%;
+    bottom:0;
+    background-color: #fff;
+    border-radius: 16px 16px 0 0;
+    box-sizing: border-box;
+  }
+  .mask-title{
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #4e4e4e;
+  }
+  .mask-close{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+  }
+  .btn-img-yellow{
+    margin-top: 38px;
+  }
+}
+/*=================登陆页样式=========================*/
+.login-banner {
+  display: block;
+  width: 635px;
+  margin: 0 auto;
+  margin-top: 65px;
+}
+
+
+/*=================糖果邀请=========================*/
+.sugar-wrap{
+  padding-bottom: 214px;
+  .result-panel{
+    margin-top: 48px;
+  }
+  .getmore{
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin: 53px 0 30px;
+  }
+  .active-wrap{
+    display: flex;
+    justify-content: space-between;
+    .active{
+      display: flex;
+      width: 325px;
+      padding: 18px 0;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      img{
+        margin-bottom: 26px;
+      }
+      .text{
+        font-size: 34px;
+        color: #fff;
+        line-height: 34px;
+        margin-bottom: 24px;
+      }
+      .count{
+        font-size: 34px;
+        line-height: 74px;
+        color: $border-color;
+      }
+    }
+    .people{
+      width: 146px;
+    }
+    .coin{
+      width: 120px;
+    }
+  }
+  .btn-img{
+    margin-top: 38px;
+  }
+  .airdrop.disabled{
+    background: #999;
+    color: #333
+  }
+  .rule-title{
+    margin-top: 66px;
+  }
+  .isactive{
+    display: none;
+    input{
+      width: 100%;
+      padding-right: 55px;
+      box-sizing: border-box;
+    }
+  }
+  .invitation{
+    position: absolute;
+    opacity: 0;
+    top: -100%;
+    overflow: hidden;
+  }
+}
+/*===================领取填写=======================*/
+.sugar-get{
+  .title{
+    padding-top: 60px;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #fff;
+  }
+  .btn-img-yellow{
+    margin-top: 38px;
+  }
+  .method-wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .method-title{
+    margin-top: 74px;
+    font-size: 46px;
+    color: #fff
+  }
+  .method-text{
+    font-size: 36px;
+    margin-top: 34px;
+    color: #fff
+  }
+  .qrcode{
+    width: 324px;
+    height: 324px;
+    margin: 40px 0;
+  }
+  .note{
+    font-size: 28px;
+    color: #fff;
+  }
+}
+
+/*===================领取详情=======================*/
+.detail-wrap {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 30px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding-top: 0px;
+  padding-bottom: 15px;
+}
+.detail-list:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.detail-list {
+  border-bottom: 1px solid #cbcbcb;
+  padding-bottom: 25px;
+  padding-top: 30px;
+}
+.detail-title {
+  font-size: 32px;
+  color: #333333;
+  margin-bottom: 20px;
+}
+.detail-time {
+  font-size: 26px;
+  color: #999999;
+}
+.detail-text {
+  font-size: 40px;
+  color: #ff9000;
+  margin-top: 17px;
+}
+.detail-left {
+  float: left;
+}
+.detail-right {
+  float: right;
+}
+.more {
+  font-size: 26px;
+  line-height: 66px;
+  color: #999999;
+  text-align: center;
+  padding-top: 15px;
+}
+
+/*========================APP下载=================================*/
+.download-wrap{
+  &>.title{
+    font-size: 30px;
+    line-height: 60px;
+    padding-top: 140px;
+    padding-bottom: 50px;
+    color: $border-color;
+    font-weight: bold;
+  }
+  .active-title{
+    font-size: 34px;
+    line-height: 1;
+    color: #fff;
+    margin-top: 88px;
+    text-align: center;
+    margin-bottom: 38px;
+  }
+  .dashboard{
+    height: 364px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: #ffffff;
+    background-image: url(../img/delc/iterest.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: top left;
+    border-radius: 20px;
+    line-height: 1;
+    .title{
+      font-size: 26px;
+      padding-top: 40px;
+      margin-bottom: 26px;
+    }
+    .balence-test{
+      font-size: 22px;
+      margin-bottom: 36px;
+    }
+    .content{
+      margin-bottom: 66px;
+      text-align: center;
+    }
+    .balence{
+      font-size: 56px;
+    }
+    .symbol{
+      font-size: 32px;
+    }
+    .footer{
+      display: flex;
+      justify-content: space-around;
+      font-size: 22px;
+    }
+    .accumulative{
+      text-align: center;
+    }
+    .profit{
+      font-size: 30px;
+      margin-top: 16px;
+    }
+  }
+  .time{
+    font-size: 20px;
+    margin-top: 20px;
+    color: #8087a3;
+    text-align: center;
+  }
+}
