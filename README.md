@@ -32,4 +32,34 @@ token world项目的运营页面
 6. 常用的功能函数放在`src/util/tool`里，可以自由添加
 
 #### 更新
-1. 2018/08/13，`src/util/tool`添加字符串模板功能
+1. 2018/08/13，`src/util/tool`添加字符串模板功能，*用于jq页面*
+2. 2018/09/15，现在活动支持spa了，demo可以查看`pages/packet`文件夹
+3. 2018/08/16，新增了toast组件，可以添加至全局
+    ```javascript
+    import {toast} from '@/components/commen/tw-toast'
+    
+    Vue.use(toast)
+
+    //使用
+    this.$toast('xxxxx'[,duration])
+    ```
+    也可以单独引用
+    ```javascript
+    import {Toast} from '@/components/commen/tw-toast'
+    Toast('xxxxx'[,duration])
+    ```
+4. 2018/08/17，新增了loading组件，可以添加至全局
+    ```javascript
+    import {loading} from '@/components/commen/tw-loading'
+
+    Vue.use(loading)
+
+    //使用
+    this.$loading(Boolean'[,text])
+    ```
+    也可以单独引用
+    ```javascript
+    import {Loading} from '@/components/commen/tw-loading'
+    Loading(Boolean[,text])
+    ```
+5. 2018/08/19，可以为元素添加自定义指令`v-loading`来实现局部loading

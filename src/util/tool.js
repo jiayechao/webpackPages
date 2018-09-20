@@ -28,33 +28,37 @@ function jumpApp(){
 }
 
 // toast
-function toast(msg) {
+
+let toast = (function() {
 	let timer;
-	let body = document.getElementsByTagName('body')[0];
-	let toast = document.getElementsByClassName('toast')[0];
-	clearInterval(timer);
-	var el = document.createElement('div');
-	el.className = 'toast';
-	el.innerHTML = msg;
-	if(toast){
-		body.removeChild(toast)
-	}
-	body.appendChild(el);
-	timer = setTimeout(function(){
+	let timerToast = function (msg) {
+		let body = document.getElementsByTagName('body')[0];
 		let toast = document.getElementsByClassName('toast')[0];
+		clearInterval(timer);
+		var el = document.createElement('div');
+		el.className = 'toast';
+		el.innerHTML = msg;
 		if(toast){
-			body.removeChild(document.getElementsByClassName('toast')[0])
+			body.removeChild(toast)
 		}
-	},2000)
-	
-}
+		body.appendChild(el);
+		timer = setTimeout(function(){
+			let toast = document.getElementsByClassName('toast')[0];
+			if(toast){
+				body.removeChild(document.getElementsByClassName('toast')[0])
+			}
+		},2000)
+	}
+	return timerToast
+})()
+
 
 // 跳转页面,这个跳转页面支持最后一级pathname的跳转和添加一级search
 function topage(name, key, val){
 	let str = location.pathname.substring(location.pathname.indexOf('\/'),location.pathname.lastIndexOf('\/')) + '/' + name + '.html';
 	let search = '';
 	console.log(str)
-	if(key){
+	if(key && typeof key === 'string'){
 		search = '?' + key + '=' + val;
 	} 
 	location.href = location.origin + str + search;

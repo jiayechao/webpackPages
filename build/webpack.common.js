@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const glob = require('glob');
 const srcDir = path.resolve(process.cwd(), "src");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 var entries = function(){
     const jsDir = path.resolve(srcDir, 'entries');
     let entryFiles = glob.sync(jsDir + '/**/*.{js,jsx}')
@@ -23,6 +24,7 @@ var entries = function(){
 var htmlplugins = function(config){
     const pageDir = path.resolve(srcDir, 'pages');
     let entryFiles = glob.sync(pageDir + '/**/*.{html,art}')
+    console.log(entryFiles)
     let map = [];
     for(let i = 0; i<entryFiles.length; i++){
         let filepath = entryFiles[i];
@@ -114,6 +116,10 @@ const moduleConfig = {
             $: 'jquery',
             jQuery: 'jquery'
         }),
+	    new LodashModuleReplacementPlugin({
+		    'collections': true,
+		    'paths': true
+	    }),
         new VueLoaderPlugin()
     ]
 };

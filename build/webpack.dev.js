@@ -16,7 +16,8 @@ module.exports = merge(common, {
         changeOrigin: true, //跨域
       },
       "/api": {
-        target: "https://tokenworldtest94.aiyuangong.com",
+        target: 'https://www.tokenworld.pro',
+        // target: "https://tokenworldtest94.aiyuangong.com",
         changeOrigin: true, //跨域
       }
     }

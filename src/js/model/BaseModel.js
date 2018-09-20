@@ -6,6 +6,12 @@ class BaseModel {
 	setDataWithJson (json) {
 		Object.assign(this, json)
 	}
+	// 只重置参数的json
+	setDataWithArgsJson (dataArr, json) {
+		for(let i of dataArr) {
+			this[i] = json[i]
+		}
+	}
 	// 根据数据设置对象并获取
 	static creatModelWithJson (json) {
 		const model = new this()

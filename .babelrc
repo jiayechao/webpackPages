@@ -1,0 +1,8 @@
+{
+  "presets": ["es2015"],
+  "plugins": [
+    "transform-runtime",
+    "lodash",
+    "syntax-dynamic-import"
+  ]
+}

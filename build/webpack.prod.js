@@ -14,10 +14,7 @@ const moduleConfig = merge(common, {
             test: /\.js$/,
             exclude: /(node_modules|bower_components)/,
             use: {
-                loader: 'babel-loader',
-                options: {
-                presets: ["es2015"]
-                }
+                loader: 'babel-loader'
             }
         },
         {
@@ -68,7 +65,7 @@ const moduleConfig = merge(common, {
     new UglifyJSPlugin({
       uglifyOptions: {
           compress: {
-              drop_console: true
+              drop_console: false
           }
       }
     }),

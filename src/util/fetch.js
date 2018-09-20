@@ -1,5 +1,6 @@
 import axios from 'axios';
-import {toast} from './tool';
+import {Toast} from '@/components/commen/tw-toast'
+
 // 创建axios实例
 const fetch = axios.create({
   timeout: 5000 // 请求超时时间
@@ -23,11 +24,14 @@ fetch.interceptors.response.use(
     console.log(response)
     const res = response.data
     if (res.code !== 200) {
-      toast(res.msg)
-      // // 500结合msg中的401判断;
-      // if (res.code === 500 && /401/.test(res.msg)) {
-      //   // sid失效跳到登陆页
-      // }
+      Toast(res.msg)
+      console.log(response.data)
+      // 401判断;
+      if (res.code === 401) {
+        // sid失效跳到登陆页
+        localStorage.removeItem('sid')
+        location.reload()
+      }
       // return Promise.reject('error')
       return response.data
     } else {
@@ -36,7 +40,7 @@ fetch.interceptors.response.use(
   },
   error => {
     console.log('err' + error)// for debug
-    toast(error.message);
+    Toast(error.message);
     return Promise.reject(error)
   }
 )

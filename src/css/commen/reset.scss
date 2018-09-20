@@ -6,8 +6,9 @@ body{
   overflow: auto;
   box-sizing: border-box;
 }
-body,ul,p{
+body,ul,p,input{
   margin: 0;
+  padding: 0;
 }
 ul{
   padding-left: 0;
@@ -81,4 +82,34 @@ button,input{
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.tw-loading-svg{
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  .circular{
+    height: 42px;
+    width: 42px;
+    animation: loading-rotate 0.8s linear infinite;
+  }
+  .path{
+    animation: loading-dash 1.5s ease-in-out infinite;
+    stroke-dasharray: 90,150;
+    stroke-dashoffset: 0;
+    stroke-width: 2;
+    stroke: #409eff;
+    stroke-linecap: round;
+  }
+}
+@keyframes loading-rotate {
+  100% {
+    transform: rotate(1turn);
+  }
 }
